@@ -27,7 +27,7 @@ var fileUpload = require('express-fileupload');
 var dust = require('dustjs-linkedin');
 var dustHelpers = require('dustjs-helpers');
 var cons = require('consolidate');
-
+var helmet = require('helmet');
 var app = express();
 var routes = require('./routes');
 
@@ -39,6 +39,7 @@ cons.dust.helpers = dustHelpers;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
+app.use(helmet());
 app.use(methodOverride());
 app.use(cookieParser());
 app.use(bodyParser.json());
